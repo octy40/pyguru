@@ -50,4 +50,10 @@ for z in range(z,len(data)):
         data_good.append(data[z].encode('ascii','ignore'))
     else:
         data_good.append(data[z])
-print data_good
+
+#Let's compare the data to see if there are missing pictures and capture those that are missing
+excel_data_IDs = data_good
+instruments_picture_IDs = onlyfiles_good
+
+instruments_in_excel_w_pictures = set(instruments_picture_IDs).intersection(excel_data_IDs) #these are elements that are in excel document and also have a picutre in Arcive\Instruments
+
