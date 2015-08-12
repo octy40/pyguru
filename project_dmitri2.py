@@ -28,5 +28,11 @@ page = requests.request("GET", url, params=parameters)
 results = json.loads(page.text)
 
 
+#iterate through the results to get all links
+
+def links():
+    for z in range(z,len(results["items"][0])):
+        
+
 
 print results["searchInformation"]
