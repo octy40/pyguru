@@ -10,29 +10,35 @@ Created on Mon Jul 27 19:43:46 2015
 import json
 import requests
 
-# Declare fixed variables
-
-mined_urls = []
-key = "AIzaSyDttxqs-uahYWQa2kefZRotb_iAF9jCyW4"
-cx = "008280251192147562951:rghr1k2p058"
-url = "https://www.googleapis.com/customsearch/v1"
-parameters = {"q": "banana",
-              "cx": cx,
-              "key": key,
-              "searchType": "image",
-              "start": results["queries"]["nextPage"][0]["startIndex"],
-              }
-
 # Use requests to query the API website and assign results to a variable
-page = requests.request("GET", url, params=parameters)
-results = json.loads(page.text)
 
 
-#iterate through the results to get all links
+
+#Define function to iterate through the results to get all links
 
 def links():
-    for z in range(z,len(results["items"][0])):
+    z = 0
+    for z in range(z,len(results["items"][z])):
+        mined_urls.append(results["items"][z]["link"].encode('ascii','ignore'))
         
+#iterate through to get 100 images
 
-
-print results["searchInformation"]
+if __name__ == "__main__":
+    # Declare all fixed variables    
+    index_num = 10 # index_num is the number of iterations of the startIndex parameter in order to get 100 images
+    mined_urls = []
+    key = "AIzaSyDttxqs-uahYWQa2kefZRotb_iAF9jCyW4"
+    cx = "008280251192147562951:rghr1k2p058"
+    url = "https://www.googleapis.com/customsearch/v1"
+    
+    
+    
+    
+    parameters = {"q": "banana",
+                  "cx": cx,
+                  "key": key,
+                  "searchType": "image",
+                  "start": results["queries"]["nextPage"][0]["startIndex"],
+                  }
+    page = requests.request("GET", url, params=parameters)
+    results = json.loads(page.text)
