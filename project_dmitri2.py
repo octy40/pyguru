@@ -25,20 +25,23 @@ def links():
 
 if __name__ == "__main__":
     # Declare all fixed variables    
-    index_num = 10 # index_num is the number of iterations of the startIndex parameter in order to get 100 images
+    index_num = 1 # index_num represent the number of iterations of the startIndex parameter in order to get 100 images
     mined_urls = []
     key = "AIzaSyDttxqs-uahYWQa2kefZRotb_iAF9jCyW4"
     cx = "008280251192147562951:rghr1k2p058"
     url = "https://www.googleapis.com/customsearch/v1"
     
-    
-    
-    
-    parameters = {"q": "banana",
+    while index_num != 101:
+        parameters = {"q": "banana",
                   "cx": cx,
                   "key": key,
                   "searchType": "image",
-                  "start": results["queries"]["nextPage"][0]["startIndex"],
+                  "start": index_num,
                   }
-    page = requests.request("GET", url, params=parameters)
-    results = json.loads(page.text)
+        page = requests.request("GET", url, params=parameters)
+        results = json.loads(page.text)
+        links()
+        index_num = index_num + 10
+    
+    print len(mined_urls)
+        
