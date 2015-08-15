@@ -31,8 +31,12 @@ if __name__ == "__main__":
     cx = "008280251192147562951:rghr1k2p058"
     url = "https://www.googleapis.com/customsearch/v1"
     
+    #Declare variable to use for input
+    
+    query = raw_input("Enter query: ")
+    
     while index_num != 101:
-        parameters = {"q": "banana",
+        parameters = {"q": query,
                   "cx": cx,
                   "key": key,
                   "searchType": "image",
