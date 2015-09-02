@@ -6,13 +6,9 @@ Created on Mon Jul 27 19:43:46 2015
 """
 
 # Import modules that will be used
-
 import json
-import requests
-
 # Use requests to query the API website and assign results to a variable
-
-
+import requests
 
 #Define function to iterate through the results to get all links
 
@@ -33,10 +29,15 @@ if __name__ == "__main__":
     
     #Declare variable to use for input
     
-    query = raw_input("Enter query: ")
+    print "\nYou're going to enter multiple search terms, but we'll use only one for now\n"
+    
+    search_term1 = raw_input("Enter first search term: ")
+    search_term2 = raw_input("Enter second search term: ")
+    search_term3 = raw_input("Enter third search term: ")
+    search_term4 = raw_input("Enter forth search term: ")
     
     while index_num != 101:
-        parameters = {"q": query,
+        parameters = {"q": search_term1,
                   "cx": cx,
                   "key": key,
                   "searchType": "image",
@@ -47,5 +48,5 @@ if __name__ == "__main__":
         links()
         index_num = index_num + 10
     
-    print len(mined_urls)
+    print 'Number of urls '+str(len(mined_urls))
         
