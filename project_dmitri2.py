@@ -27,26 +27,27 @@ if __name__ == "__main__":
     cx = "008280251192147562951:rghr1k2p058"
     url = "https://www.googleapis.com/customsearch/v1"
     
-    #Declare variable to use for input
+    #Declare variable to use for input 
     
-    print "\nYou're going to enter multiple search terms, but we'll use only one for now\n"
+    input_search = raw_input("Enter 5 search terms separated by commas: ")
     
-    search_term1 = raw_input("Enter first search term: ")
-    search_term2 = raw_input("Enter second search term: ")
-    search_term3 = raw_input("Enter third search term: ")
-    search_term4 = raw_input("Enter forth search term: ")
+    input_search_list = input_search.split(',')
     
-    while index_num != 101:
-        parameters = {"q": search_term1,
-                  "cx": cx,
-                  "key": key,
-                  "searchType": "image",
-                  "start": index_num,
-                  }
-        page = requests.request("GET", url, params=parameters)
-        results = json.loads(page.text)
-        links()
-        index_num = index_num + 10
+    i = 0
     
+    for i in range(i,len(input_search_list)):
+        while index_num != 101:
+            parameters = {"q": input_search_list[i],
+                      "cx": cx,
+                      "key": key,
+                      "searchType": "image",
+                      "start": index_num,
+                      }
+            page = requests.request("GET", url, params=parameters)
+            results = json.loads(page.text)
+            links()
+            index_num = index_num + 10
+        i = i + 1
+        index_num = 1
+       
     print 'Number of urls '+str(len(mined_urls))
-        
